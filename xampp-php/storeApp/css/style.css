@@ -1,0 +1,352 @@
+body{
+	font-family: "Times New Roman", Georgia, serif;
+    font-family: cursive;
+}
+
+p{
+    font-family: "Times New Roman", Georgia, serif;
+    font-family: cursive;
+}
+.navDiv{
+    background-color: orange;
+    margin-left: 0px;
+	margin-right:10px;
+    padding: 5px;
+    border: 5px;
+    box-shadow: 0px 5px 5px 0px #903010;
+    margin-top: 5px;
+	 text-align: center; 
+	 font-size:25pt;
+	 font-weight:20em;
+}
+.selectDiv{
+    background-color: orange;
+    margin-left: 10px;
+    margin-right:10px;
+    padding: 5px;
+    border: 5px;
+    box-shadow: 5px 8px 8px 5px #903010;
+    margin-top: 15px;
+    text-align: center; 
+    font-size:25pt;
+    font-weight:20em;
+}
+.navDiv:after{
+	content:'';
+    position: absolute;
+    right: 0;
+    top: 10;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-left: 20px solid orange;
+	border-bottom: 20px solid transparent;
+    border-right: 20px solid transparent;
+	left: 100%;
+}
+.navDiv:before{
+	content:'';
+    position: absolute;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-left: 20px solid rgba(120,120,120,.1);;
+	border-bottom: 20px solid transparent;
+    border-right: 20px solid transparent;
+	left: 0%;
+}
+.selectDiv:before{
+    content:'';
+    position: absolute;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-left: 20px solid rgba(120,120,120,.8);;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid transparent;
+    left: 0%;
+}
+.navBtn{
+    background-color: orange;
+    margin-left: 10px;
+    padding: 5px;
+    border: 5px;
+    box-shadow: 5px 8px 8px 5px #903010;
+    margin-top: 5px;
+	text-align: center; 
+	font-size:25pt;
+	font-weight:20em;
+}
+.navDiv1{
+    float: right;
+    right: 0;
+    padding-right: 20px; 
+    position: fixed;
+}
+
+.navDiv2{
+    background-color: orange;
+    margin-left: 10px;
+    margin-right:10px;
+    top: 0;
+    padding: 5px;
+    border: 5px;
+    box-shadow: 5px 8px 8px 5px #903010;
+    margin-top: -60px;
+    text-align: center; 
+    font-size:30pt;
+    font-weight:20em;  
+}
+#nextToCom{
+    background-color: orange;
+    margin-left: 10px;
+    padding: 5px;
+    border: 5px;
+    box-shadow: 5px 8px 8px 5px #903010;
+    margin-top: 5px;
+    text-align: center; 
+    font-size:25pt;
+    font-weight:20em;
+}
+.bigDiv{
+    background-color: rgba(200,200,200,0.9);
+	float:left;
+	height:500px;
+    margin-left: 50px;
+    padding: 5px;
+    border: 10px;
+    box-shadow: 5px 8px 8px 5px #903010;
+    margin-top: 5px;
+}
+
+.left-aside{
+	float:left;
+	height:500px;
+    margin-left: 5px;
+    padding:-15px; 
+    border: 10px;
+    box-shadow: 5px 8px 8px 5px #fbc;
+    margin-top: 5px;
+}
+.left-aside-img{
+    -webkit-filter:brightness(20%);
+    -moz-filter:brightness(20%);
+    filter: url(#brightness); /* required for FF */
+    filter:brightness(20%);
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+.emoji{
+    text-align: center;
+    width: 20%;
+    height: 20%;
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+#tab1Content{
+    display: block;
+
+}
+
+#tab2Content{
+    display: none;
+}
+
+#tab3Content{
+    display: none;
+}
+#tab4Content{
+    display: none;
+}
+#hidden-logout{
+    display: none;
+}
+
+
+.clickable{
+    cursor: pointer;
+}
+.form-title{
+    width: 100%;
+    font-size: 3em;
+    text-align: center;
+    background-color: darkblue;
+    margin-top: -10px;
+    color: snow;
+    border-radius: .4rem;
+    position: fixed;
+}
+form>input{
+    background-color: transparent;
+    margin-top: 3%;
+    margin-left: 15%;
+    width: 70%;
+    height: 50px;
+    font-size: 20pt;
+    box-decoration-break: inherit;
+    box-shadow: 5px 8px 8px 5px gray;
+    color: snow;
+}
+.create-form-input{
+    background-color: transparent;
+    margin-left: 25%;
+    width: 50%;
+    height: 40px;
+    font-size: 18pt;
+    margin-top: 2px; 
+    box-decoration-break: inherit;
+    box-shadow: 5px 8px 8px 5px gray;
+    color: snow;
+}
+
+
+form button{
+    margin-top: 50px;
+    margin-left: 30%;
+    border-radius: 4px;
+    background-color: blue;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    box-shadow: 5px 8px 8px 5px #903090;
+}
+
+form button span {
+  cursor: pointer;
+  position: relative;
+  transition: 0.5s;
+  font-size: 20pt;
+}
+
+form button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+form button:hover span {
+  padding-right: 25px;
+  font-size: 20pt;
+}
+
+form button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+form div{
+    font-size: 20pt;
+    margin-left: 10%;
+    padding:5%;
+}
+
+#openCom{
+    display: none;
+    position: absolute; /* Position the background text */
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1; /* Grey text */
+    width: 90%; /* Full width */
+    padding: 10px; /* Some padding */
+}
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.left-aside h2:hover{
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

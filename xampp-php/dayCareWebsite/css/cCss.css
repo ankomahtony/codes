@@ -1,0 +1,215 @@
+.container-contact {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+}
+
+.row-contact {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.6);
+
+}
+
+.page__contact .address {
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.9);
+    position: relative;
+    text-align: center;
+        box-sizing: border-box;
+        display: block;
+}
+
+.page__contact .address 
+.ct__icon {
+    position: absolute;
+    text-align: center;
+    top: -40px;
+    width: 100%;
+}
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.page__contact .address .ct__icon i {
+    background: #fff none repeat scroll 0 0;
+    -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.6);
+    height: 85px;
+    line-height: 85px;
+    margin: auto;
+    text-align: center;
+    top: 0;
+    width: 85px;
+    border-radius: 100%;
+    color: #666666;
+    font-size: 30px;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.fa-home:before {
+    content: "\f015";
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+
+@media only screen and (max-width: 767px) {.page__contact .address .address__inner {
+    padding: 54px 20px 28px;
+}
+}
+
+.page__contact .address .address__inner {
+    padding: 59px 20px 28px;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+user agent stylesheet div {
+    display: block;
+}
+
+.page__contact .address {
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    position: relative;
+    text-align: center;
+}
+
+.page__contact .address .address__inner h3 {
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-transform: capitalize;
+}
+
+.service-provided{
+    background-color:rgba(240, 248, 255, 0.4); 
+    color: rgba(127, 255, 0, 1);
+    margin-top: 15px;
+    height: 70px;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-size: 16pt;
+    padding-top: 20px;
+}
+.service-proveided-a{
+    color: rgba(127, 255, 0, 1);
+}
+
+.gallary-pic{
+    margin-top: 10px;
+}
+
+/** {box-sizing: border-box;}*/
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.course-img img{
+  height: 100%;
+}

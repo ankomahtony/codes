@@ -1,0 +1,31 @@
+snhb.modules.machineLearning.mlSettings = {
+	ts: 20200115114440,
+	sidebar_sticky: {
+		mean: 0.050603,
+		dev: 0.015000
+	},
+	try_it_leaderboard: {
+		mean: 0.069779,
+		dev: 0.015000
+	},
+	wide_skyscraper: {
+		mean: 0.090083,
+		dev: 0.015000
+	},
+	main_leaderboard: {
+		mean: 0.020050,
+		dev: 0.015000
+	},
+	mid_content: {
+		mean: 0.089991,
+		dev: 0.015000
+	},
+	bottom_medium_rectangle: {
+		mean: 0.089942,
+		dev: 0.015000
+	},
+	right_bottom_medium_rectangle: {
+		mean: 0.040126,
+		dev: 0.015000
+	},
+};
