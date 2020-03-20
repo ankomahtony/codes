@@ -52,11 +52,11 @@
 </head>
 <body>
 <header class="top">
-            <div class="header-area header-sticky " style="height: 100%;">
+            <div class="header-area header-sticky " style="height: 100%; margin-left: 5%;">
                 <div class="container">
                     <div class="row">
-                     <h1>  <span style="color: darkviolet;">We</span><span style="color: gold;">ll</span><span style="color: deepskyblue;">be</span><span style="color: green;">ing</span> <span style="color: gold;">K</span><span style="color: red;">i</span><span style="color: deepskyblue;">d</span><span style="color: darkviolet;">s</span> <span style="color: red;">C</span><span style="color: deepskyblue;">a</span><span style="color: green;">r</span><span style="color: darkviolet;">e</span> </a></li>
-                     </h1>
+                     <h1> <a href="../index.php"> <span style="color: darkviolet;">We</span><span style="color: gold;">ll</span><span style="color: deepskyblue;">be</span><span style="color: green;">ing</span> <span style="color: gold;">K</span><span style="color: red;">i</span><span style="color: deepskyblue;">d</span><span style="color: darkviolet;">s</span> <span style="color: red;">C</span><span style="color: deepskyblue;">a</span><span style="color: green;">r</span><span style="color: darkviolet;">e</span> </a>
+                     - <span style="color: gold;"><?php echo $class['className'];?></span></h1>
                  </div>
                  <div class="row">
                     <center>
@@ -138,7 +138,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </div><!-- .container-fluid -->
 
     <div style="color: indigo; padding-left: 20%; font-size: 20pt; background-color: yellow;">Teachers : <?php echo ' &#128073; '.$class['teacher1'].' - '.$class['teacher2'].' - '.$class['teacher3'];?></div>
-    <br><br>
+    <br>
+    <div>
+        <p style=" font-size: 18pt;line-height: 2; color: black;"><?php echo $class['aboutClass']; ?></p>
+    </div>
 </div><!-- .outer-container -->
 
 <script type='text/javascript' src='js/jquery.js'></script>

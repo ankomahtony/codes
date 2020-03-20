@@ -1,0 +1,182 @@
+{% extends "layout.html" %}
+{% block post %}
+    <h1>Dashboard</h1>
+   
+    	<div id="d3body">
+    		<h3>Scatter Plot</h3>
+    	
+    	</div>
+  		<div id="d3body1">
+  			<h3>Circle Plot</h3>
+    	
+    	</div>
+
+    	<div id="d3body2">
+    		<h3>Bar Plot</h3>
+    	
+    	</div>
+    	<div id="d3body3">
+    		<h3>Histogram Plot</h3>
+    	
+    	</div>
+
+     <script type="text/javascript">
+    	var dataset = [
+    					[5, 20], 
+    					[480, 90], 
+    					[250, 50], 
+    					[100, 33], 
+    					[330, 95],
+    					[410, 12], 
+    					[475, 44], 
+    					[25, 67], 
+    					[80, 21], 
+    					[220, 88]
+    				];
+
+    	var w = 600;
+    	var h = 200;
+    	var svg = d3.select("#d3body")
+    				.append("svg")
+    				.attr("width",w)
+    				.attr("height",h);
+
+
+    	svg.selectAll("circle")
+    		.data(dataset)
+    		.enter()
+    		.append("circle")
+    		.attr("cx", function(d){
+    			return d[0]+15;
+    		})
+    		.attr("cy", function(d){
+    			return d[1];
+    		})
+    		.attr("r",function(d) {
+						return Math.sqrt(h - d[1]);
+			});
+
+    	svg.selectAll("text")
+    		.data(dataset)
+    		.enter()
+    		.append("text")
+    		.text(function(d) {
+				return d[0] + "," + d[1];
+			})
+			.attr("x", function(d) { return d[0]+35;
+			})
+			.attr("y", function(d) {
+				return d[1]; })
+			.attr("font-family", "sans-serif")
+       		.attr("font-size", "11px")
+       		.attr("fill", "red");
+
+    </script>
+
+    <script type="text/javascript">
+    	var w = 500;
+    	var h = 70;
+    	var svg = d3.select("#d3body1")
+    				.append("svg")
+    				.attr("width",w)
+    				.attr("height",h);
+
+    	var dataset = [5,10,15,20,25];
+
+    	var circles = svg.selectAll("circle")
+    		.data(dataset)
+    		.enter()
+    		.append("circle");
+
+    	circles.attr("cx", function(d, i) { 
+    			return (i * 50) + 25;
+    		})
+    		.attr("cy", h/2)
+    		.attr("r", function(d) {
+    			return d; 
+    		})
+    		.attr("fill", "yellow") .attr("stroke", "orange") 
+    		.attr("stroke-width", function(d) {
+				return d/2; 
+			});
+    </script>
+    <script type="text/javascript">
+    	var dataset = [];
+    	for (var i = 0; i < 15; i++) {
+    		var newNumber = Math.floor(Math.random() * 30);
+    		dataset.push(newNumber);	
+    	}
+
+  		d3.select("#d3body2").selectAll("div")
+        	.data(dataset)
+        	.enter()
+        	.append("div")
+        	.attr("class", "bar")
+        	.style("height", function(d) { 
+        		var barHeight= d*5;
+        		return barHeight + "px";
+			});    	
+    </script>
+    <script type="text/javascript">
+    	var w = 500; 
+    	var h = 100;
+    	var barPadding = 1;
+		var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+                    11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];	
+    	
+
+    	var svg = d3.select("#d3body3")
+    				.append("svg")
+                	.attr("width", w)
+                	.attr("height", h);
+
+        svg.selectAll("rect")
+        	.data(dataset)
+        	.enter()
+        	.append("rect")
+        	 .attr({
+				x: function(d, i) { return i * (w / dataset.length); }, 
+				y: function(d) { return h - (d * 4); },
+				"width": w / dataset.length - barPadding,
+				height: function(d) { return d * 4; },
+				fill: function(d) { return "rgb(0, 0, " + (d * 10) + ")"; } 
+			});
+
+       	svg.selectAll("text")
+	       .data(dataset)
+	       .enter()
+	       .append("text")
+	       .text(function(d) { return d;
+			})
+	       .attr("x", function(d, i) {
+				return i * (w / dataset.length);
+			})
+			.attr({
+				y: function(d) {return h - (d * 4)+14;}, 
+				"font-family": "sans-serif",
+				"font-size": "10px",
+				"fill": "white",
+				"text-anchor": "middle",
+				x: function(d, i) {return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;}
+			});
+    </script>
+
+
+<!--     <div id="d3body">
+    	<script type="text/javascript">
+    		var dataset = [50,10,15,20,25];
+    		d3.select("#d3body").selectAll("p")
+    			.data(dataset)
+    			.enter()
+    			.append("p")
+    			.text(function(d) { return "I can get  " + d; })
+    			.style("color",function(d) {
+    				if (d>15){
+    					return "red"
+    				}else{
+    					return "black"
+    				}
+    			});
+    	</script>
+    </div> -->
+{% endblock post %}

@@ -73,6 +73,11 @@ a:hover, a:active {
 .site-navigation .site-title a {
     display: block;
 }
+.class-details{
+    font-size: 18pt;
+    line-height: 2;
+    font-weight: 10;
+}
 
 /*
   Hamburger Menu

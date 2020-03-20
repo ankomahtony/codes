@@ -1,42 +1,13 @@
 <?php
-session_start();
-
-// connect to database
-$connection = mysqli_connect('localhost', 'root', '', 'daycare');
-
-// call the register() function if register_btn is clicked
-if (isset($_POST['addClass'])) {
-	addClass();
-}
-
-function addClass(){
-    global $connection;
-    $classID  = $_POST['classID'];
-    $className = $_POST['className'];
-    $noOfKids = $_POST['noOfKids'];
-    $teacher1 = $_POST['teacher1'];
-    $teacher2 = $_POST['teacher2'];
-    $teacher3 = $_POST['teacher3'];
-    $aboutClass = $_POST['aboutClass'];
-
-    $query = mysqli_query($connection, "INSERT INTO classes (classID,className, noOfKids,teacher1,teacher2, teacher3,aboutClass) VALUES ('$classID','$className','$noOfKids','$teacher1','$teacher2','$teacher3','$aboutClass')");
-    if ($query) {
-        header('location: index.php');
-    }else{
-        echo "Something went wrong somewhere".$className." ".$noOfKids." ".$teacher1." ".$teacher2." ".$teacher3;
-
-    }
-
-}
+include("functions.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Add staff</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bulma.css">
@@ -48,7 +19,7 @@ function addClass(){
         }
     </style>
 </head>
-    <body>
+	<body>
 
 <header class="top" >
             <div class="header-area header-sticky fixed" style="height: 80px;">
@@ -67,26 +38,31 @@ function addClass(){
 <br><br><br>
     <div id="wrapper">
         <div id="page" class="container">
-                <h1 class="heading has-text-weight-bold is-size-4">Add New Class </h1>
+                <h1 class="heading has-text-weight-bold is-size-4">Add New Staff </h1>
 
 
-    <div class="row">
+	<div class="row">
 
-            </div>
-            <br>
+			</div>
+			<br>
 
-    <form action="" method="post">
-        Class ID: <input type="number" name="classID" class="input">
-        Class Name: <input type="text" name="className" class="input">
-        Number Of Kids: <input type="number" name="noOfKids" class="input">
-        Teacher1 : <input type="text" name="teacher1" class="input">
-        Teacher2 : <input type="text" name="teacher2" class="input">
-        Teacher3 : <input type="text" name="teacher3" class="input">
-        About this Class : <textarea name="aboutClass" class="input"></textarea> 
-        <button type="submit" name="addClass" class="btn btn-primary">Add</button>
-
-    </form>
-        <div>
+			<form action="" class="create_form" method="post" enctype="multipart/form-data">
+                Full Name:
+				<input type="text" name="fullName" class="input" placeholder ="Enter Full Name">
+                Email:
+				<input type="text" name="email" class="input" placeholder ="Enter Valid Email">
+                Short Name:
+				<input type="text" name="shortName" class="input" placeholder ="Enter Your short name student called you with">
+                Department:
+				<input type="text" name="department" class="input" placeholder ="class id or the department name">
+                Mobile Number
+				<input type="text" name="mobileNumber" class="input" placeholder ="Enter Mobile number">
+				
+                Picture:
+				<input type="file" name="picture" accept="image/*" class="input">
+				<button type="submit" name="create_staff" class="btn btn-primary"><span>Create Staff</span></button>
+			</form>
+	<div>
 </div>
 </div>
 </div>

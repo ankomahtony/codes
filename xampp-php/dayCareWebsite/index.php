@@ -3,7 +3,12 @@ session_start();
 // connect to database
 $connection = mysqli_connect('localhost', 'root', '', 'daycare');
 
-
+//log user out if logout button is clicked
+if (isset($_POST['logout'])){
+    session_destroy();
+    unset($_SESSION['user']);
+    header("refresh:5; url=index.php");
+}
 // call the postEvent() function if postPic is clicked
 if (isset($_POST['postPic'])) {
     postPicture();
@@ -54,11 +59,13 @@ function postPicture(){
 
 }
 
+
+
 ?>
 
 <!doctype html>
 <html class="no-js" lang="en">
-     <head>
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Wellbeing Kids Care - Home</title>
@@ -129,25 +136,33 @@ function postPicture(){
                                         <li><a href="event-details.html">Event details</a></li>
                                     </ul> -->
                                 </li>
-                                <li class="hidden-sm"><a href="#staff" style="color: blue;">Staff</a>
+                                <li class="hidden-sm"><a href="classes/staffs.php" style="color: blue;">Staff</a>
                                 <!-- <ul>
                                     <li><a href="teacher.html">Staff</a></li>
                                     <li><a href="teacher-details.html">Staff Details</a></li>
                                 </ul> -->
                             </li>
-                            <li class="hidden-sm" ><a href="#Student" style="color: indigo;">Students</a>
+                            <li class="hidden-sm" ><a href="#students" style="color: indigo;">Students</a>
                                 <!-- <ul>
                                     <li><a href="teacher.html">Student</a></li>
                                     <li><a href="teacher-details.html">Alumini</a></li>
                                 </ul> -->
                             </li>
-                            <!-- <li><a href="blog.html">blog</a>
-                            <ul>
-                                <li><a href="blog.html">blog</a></li>
-                                <li><a href="blog-details.html">blog details</a></li>
+                            <?php 
+                                if (!isset($_SESSION['user'])) {
+                                    echo '<li><a href="login.php">Login</a></li>';
+                                }else{
+                                    echo ' <li><a href="#">'.$_SESSION['user']['username'].'</a><ul>
+                                     <li><button class="btn btn-primary navBtn" onclick="javascrpit:dashboard()">&#128694; DashBoard</button></li>
+                                <li><button class="btn btn-primary navBtn" onclick="javascrpit:logout()">&#128694; Log Out</button></li>
                             </ul>
-                        </li> -->
-                        <li><a href="#contactUs" style="color: orange;">Contact Us</a></li>
+                            </li>';
+                                }
+                             ?>
+                            
+                           
+                            <!-- 
+                        <li><a href="#contactUs" style="color: orange;">Contact Us</a></li> -->
                         <!-- <li><a href="#">Buy Now</a> -->
                     </ul>
                 </nav>
@@ -208,7 +223,7 @@ function postPicture(){
     </div>
     <!-- End Slingle Slide -->
     <!-- Start Slingle Slide -->
-    <div class="single-slide item " style="background-image: url(wbk-images/header4.png)">
+    <div class="single-slide item " style="background-image: url(wbk-images/header2.png)">
     <!-- Start Slider Content -->
         <div class="slider-content-area">
             <div class="container">
@@ -237,12 +252,17 @@ function postPicture(){
                            <div class="slide-content" style="font-family: cursive;">
                             <?php 
                                 $today = date('Y-m-d');
-                                $query_last_event = mysqli_query($connection, "SELECT * FROM `events` WHERE eventDate > $today ORDER by eventDate ASC LIMIT 1" );
+                                $query_last_event = mysqli_query($connection, "SELECT * FROM `events` WHERE eventDate > '$today' ORDER by eventDate asc LIMIT 1" );
                                 $last_event = mysqli_fetch_assoc($query_last_event);
                             ?>
+                                <?php
+                                $orgDate = $last_event['eventDate'];  
+                                $newDate = date("d-M-Y", strtotime($orgDate));
+                                
+                                ?>
                                 <h3 style=" font-family: fantasy;">Pressing Event </h3>
                                 <p style=" font-family: monospace;"><?php echo $last_event['event']; ?></p>
-                                <p style=" font-family: monospace;"><?php echo $last_event['eventDate'] . $today; ?></p>
+                                <p style=" font-family: monospace;"><?php echo $newDate ?></p>
                                 <a class="default-btn" href="#event">Learn more</a>
                             </div>
                         </div>
@@ -270,7 +290,7 @@ function postPicture(){
           
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12" style="margin-top:50px; font-family: Georgia; margin-bottom: 10px;">
-                <h1 style="font-size: 18pt;"><div>Welcome to our world of Beautiful Beginning</div></h1>
+                <h1 style="font-size: 18pt; color: orange"><div>Welcome to our world of Beautiful Beginning</div></h1>
                 <hr class="hr-primary">
                 <div>
                     <h3 style="color: /*rgba(255, 192, 10, 1)*/ purple; padding: 5%; font-size: 19px; line-height: 2;"> We are committed to making sure your ward can see the picture of his or her future from the beginning. Thus by making sure we provide the right foundation for his or her academic, social, moral and spiriual life. </h3>
@@ -286,30 +306,24 @@ function postPicture(){
     <div class="notice-area-cover">
       <div class="container">
     <div class="row">
-    <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-md-6 col-sm-12 col-xs-12">
         <div  id="aboutUs">
             <br>
 
             <h3 class="about-shadow">About Our School</h3>
             <hr class="hr-primary">
-                <p style="color: white;line-height: 2;">The School provides with its clients, quality of service which will propel the clients to enviable
-                    heights in this competitive century of the history of mankind. The school has dedicated and committed team of young staff with a common vision towards its goals.  The ultimate vision of the school is to establish good business relationship with
-                    clients giving them value for their engagement with the school. The school has instituted systems that ensure that it is always on top of the game when it comes to impacting knowledge on younger ones. The school provide quality and practical training at all times to students.giving them value for their engagement with the center.
-                        The center will institute systems that will ensure that it is always on top of the game when it comes to
-                        impacting knowledge on IT training services.
-                    <span id="dots">...</span>
-                    <span id="more">  The center will always provide quality and practical computer
-                        training at all times.
-                    The center will institute systems that will ensure that it is always on top of the game when it comes to
-                        impacting knowledge on IT training services. The center will always provide quality and practical computer
-                        training at all times.</span>
+                <p style="color: yellow;line-height: 1.5; font-size: 12pt; background-color: indigo; padding: 10px;">Wellbeing Kids Care Centre was set up in February 2016 primarily as Mother Care Service Provider with an environment for early years education particularly to meet the needs of busy/career parents within the community its operates.<br>
+                After a few years of its operation the centre is currently one of the best pre-school set ups if not the best in the Ahafo Region, specifcally Asunafo North Municipality and its environs with the most child friendly environment.<br>
+                Our Mission is to help parents/guardians with the care of their wards whilst they concentrate and attend to their careers/businesses. This we do first by caring naturally for the kids and providing them with a solid foundation for their future academic, social, moral and spiritual life.<br>
+                Thus Wellbeing Kids care centre is actually a home away home for your child at any point in time whether enrolled in as full day care child or after care child. We are always ready to welcome your ward to our world of beautiful beginning.
                     </p>
-                    <button onclick="myFunction()" id="myBtn"
-                    class="btn btn-primary btn-lg prog-btn">Read more</button>
+                    <br>
+                    <!-- <button onclick="myFunction()" id="myBtn"
+                    class="btn btn-primary btn-lg prog-btn">Read more</button> -->
     </div>
     </div>
 
-    <div class="col-md-6 col-sm-6 col-xs-12" style="background-color: rgba(0, 200, 200, 0.5);">
+    <div class="col-md-6 col-sm-12 col-xs-12" style="background-color: rgba(0, 200, 200, 0.5);">
         <div class="notice-right" id="contactUs">
             <h3 class="about-shadow" style="color: indigo;">Get In Touch With Us</h3>
             <hr class="hr-primary">
@@ -579,7 +593,7 @@ function postPicture(){
         <div class="row" style="height: 100%;">
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div style="height: 100%; margin-top: 10%; ">
-                 <img src="staffs/staff2.JPG"> 
+                 <img src="images/staffs/staff2.JPG"> 
                  <br>
                  <br>
              </div>
@@ -665,7 +679,7 @@ function postPicture(){
 </div>
 <div class="row">
     <?php 
-        $query_events = mysqli_query($connection, "SELECT * FROM events");
+        $query_events = mysqli_query($connection, "SELECT * FROM events  WHERE eventDate > $today ORDER by eventDate DESC");
         while ($event=mysqli_fetch_array($query_events)) {
             switch (substr($event['eventDate'], 5,2)) {
                 case "01":
@@ -726,9 +740,14 @@ function postPicture(){
     
  
     </div>
-    <div class="col-md-6 col-sm-12 col-xs-12">
+    <?php
+         if (isset($_SESSION['user'])) {
+            echo '<div class="col-md-6 col-sm-12 col-xs-12">
         <a class="default-btn" href="add_event.php">Add New Event</a>
-    </div>
+    </div>';
+        }
+      ?>
+    
 </div>
 </div>
 </div>
@@ -742,7 +761,7 @@ function postPicture(){
             <h1 style="color: white; padding-bottom: 50px;">Gallery</h1>
                 <div class="row">
         <?php 
-            $query_gallery = mysqli_query($connection, "SELECT * FROM gallary");
+            $query_gallery = mysqli_query($connection, "SELECT * FROM gallary order by id desc limit 12");
             while ($gallery=mysqli_fetch_array($query_gallery)) {
                 echo '<div class="col-md-4 col-sm-6 col-xs-3">
                              <img src="'.$gallery['picture'].'" class="img-responsive img-rounded" alt="Cinque Terre" style="height: 200px; margin-top:10px;">
@@ -750,10 +769,15 @@ function postPicture(){
             }
         ?>
                    
-              <button class="btn btn-primary col-md-3 col-sm-10 col-xs-10" onclick="openForm()" style="margin-top: 5%; margin-left: 20%;"> <i class="zmdi zmdi-plus"></i>
-                </button>
+              
+
          </div>
-                    
+             <?php
+         if (isset($_SESSION['user'])) {
+            echo '<button class="btn btn-primary col-md-3 col-sm-10 col-xs-10" onclick="openForm()" style="margin-top: 5%; margin-left: 20%;"> <i class="zmdi zmdi-plus"> Add Picture</i>
+                </button>';
+        }
+      ?>       
 
     </div>
        
@@ -794,36 +818,31 @@ function postPicture(){
         </div>
 
 <!-- Subscribe Start -->
-<div class="subscribe-area pt-60 pb-70">
+<div class="subscribe-area pt-60 pb-70" style="background-color: black;">
 <div class="container">
+<div class="row" >
+    <h1 style="color: orange;">Subscribe our Youtube Channel</h1>
+    <div class="col-md-12">
+        
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/oPiYz7-eJZ8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+</div>
 <div class="row">
-<div class="col-md-8 col-md-offset-2">
-    <div class="subscribe-content section-title text-center">
-        <h2>subscribe our newsletter</h2>
-        <p>I must explain to you how all this mistaken idea </p>
-    </div>
-    <div class="newsletter-form mc_embed_signup">
-        <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-            <div id="mc_embed_signup_scroll" class="mc-form">
-                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your e-mail address" required>
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                <button id="mc-embedded-subscribe" class="default-btn" type="submit" name="subscribe"><span>subscribe</span></button>
-            </div>
-        </form>
-        <!-- mailchimp-alerts Start -->
-        <div class="mailchimp-alerts">
-            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-        </div>
-        <!-- mailchimp-alerts end -->
-    </div>
+    <a href="https://www.youtube.com/channel/UC7kbK_wGiBDuh77J7t3JMBw?sub_confirmation=1"><button id="mc-embedded-subscribe" class="default-btn" type="submit" name="subscribe"><span>subscribe</span> and Watch more</button></a> 
 </div>
-</div>
+       
+
+
 </div>
 </div>
 <!-- Subscribe End -->
+
+<form id="hidden-logout" method="post" style="display: none;">
+        <button id="logout_user" name="logout" type="submit">logout</button>
+</form>
+<a href="dashboard/dashboard.php" id="dashboardID" style="display: none;"></a>
+
 <!-- Footer Start -->
 <footer class="footer-area">
 <div class="main-footer">
@@ -851,7 +870,7 @@ function postPicture(){
             <ul>
                 <li><a href="#">addmission</a></li>
                 <li><a href="#">Academic Calender</a></li>
-                <li><a href="event.html">Event List</a></li>
+                <li><a href="#event">Event List</a></li>
             </ul>
         </div>
     </div>
@@ -940,6 +959,13 @@ function carousel() {
   if (myIndex > x.length) {myIndex = 1}    
   x[myIndex-1].style.display = "block";  
   setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+
+function logout(){
+        document.getElementById("logout_user").click();
+}
+function dashboard(){
+        document.getElementById("dashboardID").click();
 }
 </script>
 </body>
